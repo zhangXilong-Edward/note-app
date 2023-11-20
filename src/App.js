@@ -121,7 +121,7 @@ function App() {
   // below is for drag and drop functionality 
   const draggedItem = useRef(null);
   const draggedOverItem = useRef(null);
-
+/*
   const dragStart = (e, arrayIndex) => {
     //stored the dragged item -> the postion we set is the index of the array 
     draggedItem.current = arrayIndex;
@@ -146,6 +146,28 @@ function App() {
     draggedOverItem.current = null;
     setTodoItems(reorderedItems);
   };
+
+  */
+ 
+  const dragStart = (e, position) =>{
+    draggedItem.current = position;
+  }
+  const dragEnter=(e, position) =>{
+    draggedOverItem.current = position; 
+  }
+
+  const dragEnd=() =>{
+    const tempArray = [...todoItems]; 
+    const draggedItemContent = tempArray[draggedItem.current]
+
+    tempArray.splice(draggedItem, 1); 
+    tempArray.splice(draggedOverItem, 0, draggedItemContent)
+
+    draggedItem.current=null;
+    draggedItemContent.current=null;
+    setTodoItems(tempArray)
+     
+  }
 
   return (
     <div className={darkMode ? "app dark" : "app"}>
