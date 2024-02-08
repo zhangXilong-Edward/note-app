@@ -121,33 +121,6 @@ function App() {
   // below is for drag and drop functionality 
   const draggedItem = useRef(null);
   const draggedOverItem = useRef(null);
-/*
-  const dragStart = (e, arrayIndex) => {
-    //stored the dragged item -> the postion we set is the index of the array 
-    draggedItem.current = arrayIndex;
-    console.log(e.target.innerHTML);
-  };
-
-  const dragEnter = (e, itemId) => {
-    draggedOverItem.current = itemId;
-    console.log(e.target.innerHTML);
-  };
-
-  const dragEnd = () => {
-    const reorderedItems = [...todoItems];
-
-    const draggedItemContent = reorderedItems[draggedItem.current];
-
-    //splice creates a new array starting from the first param, the 2nd param indicates how many elements to delete
-    reorderedItems.splice(draggedItem.current, 1);
-    reorderedItems.splice(draggedOverItem.current, 0, draggedItemContent);
-
-    draggedItem.current = null;
-    draggedOverItem.current = null;
-    setTodoItems(reorderedItems);
-  };
-
-  */
  
   const dragStart = (e, position) =>{
     draggedItem.current = position;
